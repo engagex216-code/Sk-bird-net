@@ -211,27 +211,26 @@ def page(title, active, body):
 </html>"""
 
 SERVICES = [
-    ("Bird Netting Service", "Effective pigeon control with durable, UV-resistant bird nets for balconies, windows, and rooftops.", BIRD_NETTING_URI, "shield"),
-    ("Child Safety Net", "Designed to prevent accidental falls from high-rise balconies and staircases, especially for children.", CHILD_SAFETY_URI, "baby"),
-    ("Sport Net Installation", "Custom nets for cricket, football, and badminton practice areas. Durable and weather-resistant solutions.", SPORT_NET_URI, "trophy"),
-    ("Balcony Netting", "Protect open spaces from birds without blocking air or light. Ideal for apartment balconies in metro cities.", BALCONY_NET_URI, "wind"),
-    ("Residential Bird Net", "Discreet and long-lasting netting systems to keep birds away from your windows and air conditioning units.", RESIDENTIAL_URI, "home"),
-    ("Invisible Grill Installation", "Modern safety solution that offers protection without obstructing your view.", INVISIBLE_GRILL_URI, "scan"),
-    ("Bamboo Chick", "Natural bamboo chick blinds for balconies and verandas — cuts heat and glare while keeping airflow and privacy.", BAMBOO_CHICK_URI, "blinds"),
+    ("Bird Netting Service", "Effective pigeon control with durable, UV-resistant bird nets for balconies, windows, and rooftops.", BIRD_NETTING_URI, "shield", "bird-netting-service"),
+    ("Child Safety Net", "Designed to prevent accidental falls from high-rise balconies and staircases, especially for children.", CHILD_SAFETY_URI, "baby", "child-safety-net"),
+    ("Sport Net Installation", "Custom nets for cricket, football, and badminton practice areas. Durable and weather-resistant solutions.", SPORT_NET_URI, "trophy", "sport-net-installation"),
+    ("Balcony Netting", "Protect open spaces from birds without blocking air or light. Ideal for apartment balconies in metro cities.", BALCONY_NET_URI, "wind", "balcony-netting"),
+    ("Residential Bird Net", "Discreet and long-lasting netting systems to keep birds away from your windows and air conditioning units.", RESIDENTIAL_URI, "home", "residential-bird-net"),
+    ("Invisible Grill Installation", "Modern safety solution that offers protection without obstructing your view.", INVISIBLE_GRILL_URI, "scan", "invisible-grill-installation"),
+    ("Bamboo Chick", "Natural bamboo chick blinds for balconies and verandas — cuts heat and glare while keeping airflow and privacy.", BAMBOO_CHICK_URI, "blinds", "bamboo-chick"),
 ]
 
 # ---------------- INDEX ----------------
-service_cards = ""
-for name, desc, img, icon in SERVICES:
-    service_cards += f"""
-    <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-      <img src="{img}" class="w-full h-40 object-cover" alt="{name}">
-      <div class="p-6">
-        <i data-lucide="{icon}" class="w-7 h-7 text-[var(--blue)] mb-4"></i>
-        <p class="font-bold text-[var(--navy)] mb-2 text-sm tracking-wide">{name.upper()}</p>
-        <p class="text-xs text-gray-500 leading-relaxed">{desc}</p>
-      </div>
-    </div>"""
+service_picker_items = ""
+for name, desc, img, icon, slug in SERVICES:
+    service_picker_items += f"""
+    <a href="services.html#{slug}" class="group flex items-center gap-3 border border-gray-200 rounded-lg px-4 py-3.5 hover:border-[var(--orange)] hover:bg-orange-50 transition">
+      <span class="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--navy)]/5 text-[var(--blue)] group-hover:bg-[var(--orange)] group-hover:text-white transition shrink-0">
+        <i data-lucide="{icon}" class="w-5 h-5"></i>
+      </span>
+      <span class="text-sm font-semibold text-[var(--navy)]">{name}</span>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 ml-auto group-hover:text-[var(--orange)] transition"></i>
+    </a>"""
 
 index_body = f"""
 <!-- Hero -->
@@ -249,17 +248,17 @@ index_body = f"""
   </div>
 </section>
 
-<!-- Our Main Services -->
-<section id="services" class="max-w-7xl mx-auto px-6 pt-14 pb-10">
-  <div class="text-center max-w-2xl mx-auto mb-10">
-    <p class="text-[var(--orange)] text-sm font-bold tracking-widest mb-2">WHAT WE OFFER</p>
-    <h2 class="text-2xl md:text-3xl font-extrabold text-[var(--navy)]">Our Main Services</h2>
-  </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-    {service_cards}
-  </div>
-  <div class="text-center mt-8">
-    <a href="services.html" class="inline-block border-2 border-[var(--navy)] text-[var(--navy)] text-sm font-semibold px-6 py-2.5 rounded-md hover:bg-[var(--navy)] hover:text-white transition">View All Services</a>
+<!-- Service Picker -->
+<section id="services" class="max-w-3xl mx-auto px-6 pt-14 pb-10">
+  <div class="border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 bg-white">
+    <div class="text-center mb-6">
+      <p class="text-[var(--orange)] text-sm font-bold tracking-widest mb-2">WHAT DO YOU NEED?</p>
+      <h2 class="text-xl md:text-2xl font-extrabold text-[var(--navy)]">Choose Your Service</h2>
+      <p class="text-xs text-gray-500 mt-2">Pick what you need protection for — we'll take you straight to the details.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-3">
+      {service_picker_items}
+    </div>
   </div>
 </section>
 
@@ -354,10 +353,10 @@ with open('/mnt/user-data/outputs/index.html','w') as f:
 
 # ---------------- SERVICES PAGE ----------------
 service_blocks = ""
-for i, (name, desc, img, icon) in enumerate(SERVICES):
+for i, (name, desc, img, icon, slug) in enumerate(SERVICES):
     reverse = "md:flex-row-reverse" if i % 2 else ""
     service_blocks += f"""
-  <div class="flex flex-col {reverse} md:flex-row items-center gap-8 py-10 border-b border-gray-100 last:border-0">
+  <div id="{slug}" class="scroll-mt-24 flex flex-col {reverse} md:flex-row items-center gap-8 py-10 border-b border-gray-100 last:border-0">
     <img src="{img}" class="w-full md:w-1/2 h-64 object-cover rounded-xl" alt="{name}">
     <div class="md:w-1/2">
       <i data-lucide="{icon}" class="w-8 h-8 text-[var(--orange)] mb-3"></i>
