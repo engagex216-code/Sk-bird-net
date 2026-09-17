@@ -1,0 +1,11 @@
+{
+  "name": "SK Bird Net Solutions",
+  "short_name": "SK Bird Net",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#F6F3EA",
+  "theme_color": "#12233F",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://engagex216-code.github.io/Sk-bird-net/sitemap.xml
