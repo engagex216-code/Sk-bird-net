@@ -1,4 +1,12 @@
 import re
+import urllib.parse
+
+WHATSAPP_NUMBER = "918878020513"
+
+def wa_link(message):
+    return f"https://wa.me/{WHATSAPP_NUMBER}?text={urllib.parse.quote(message)}"
+
+WA_GENERIC = wa_link("Hi SK Bird Net, I'd like a free quote.")
 
 HERO_URI = "assets/hero-balcony.jpg"
 BIRD_NETTING_URI = "assets/bird-netting-service.jpg"
@@ -60,11 +68,13 @@ def header(active):
       {link('Contact Us','contact.html','contact')}
     </nav>
     <div class="hidden md:flex items-center gap-3">
-      <a href="contact.html" class="text-sm font-semibold text-[var(--navy)] hover:text-[var(--orange)]">Book Online</a>
-      <a href="contact.html#quote" class="bg-[var(--orange)] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:brightness-95">Get Free Quote</a>
+      <a href="{WA_GENERIC}" target="_blank" rel="noopener" class="flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:brightness-95">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
     <div class="flex items-center gap-2 md:hidden">
-      <a href="https://wa.me/918878020513?text=Hi%20SK%20Bird%20Net%2C%20I%27d%20like%20a%20free%20quote." target="_blank" rel="noopener"
+      <a href="{WA_GENERIC}" target="_blank" rel="noopener"
          class="flex items-center gap-1.5 bg-[#25D366] text-white text-xs font-semibold px-3 py-2 rounded-md">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
         Chat
@@ -80,9 +90,11 @@ def header(active):
       {link('Services','services.html','services')}
       {link('About Us','about.html','about')}
       {link('Contact Us','contact.html','contact')}
-      {link('Book Online','contact.html','')}
     </nav>
-    <a href="contact.html#quote" class="mt-3 block text-center bg-[var(--orange)] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:brightness-95">Get Free Quote</a>
+    <a href="{WA_GENERIC}" target="_blank" rel="noopener" class="mt-3 flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:brightness-95">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+      Chat on WhatsApp
+    </a>
   </div>
 </header>"""
 
@@ -108,7 +120,7 @@ STATS = """<section class="bg-[var(--navy)] py-12">
 </section>"""
 
 def footer():
-    return """<footer id="contact-footer" class="bg-[var(--navy)] text-gray-300 mt-6">
+    return f"""<footer id="contact-footer" class="bg-[var(--navy)] text-gray-300 mt-6">
   <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-10">
     <div>
       <p class="font-extrabold text-white text-lg mb-3">SK BIRD NET</p>
@@ -132,14 +144,13 @@ def footer():
         <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
       </ul>
     </div>
-    <div id="quote" class="bg-white text-gray-800 rounded-xl p-5">
-      <p class="font-bold text-[var(--navy)] mb-3 text-sm">Request a Quote Form</p>
-      <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-2 mb-2">
-        <input type="text" placeholder="Name" class="border border-gray-200 rounded-md px-3 py-2 text-xs">
-        <input type="tel" placeholder="Phone" class="border border-gray-200 rounded-md px-3 py-2 text-xs">
-      </div>
-      <textarea placeholder="Message" rows="2" class="w-full border border-gray-200 rounded-md px-3 py-2 text-xs mb-2"></textarea>
-      <button class="w-full bg-[var(--orange)] text-white text-xs font-semibold py-2.5 rounded-md hover:brightness-95">GET FREE QUOTE</button>
+    <div class="bg-white text-gray-800 rounded-xl p-5 text-center">
+      <p class="font-bold text-[var(--navy)] mb-1 text-sm">Ready to get started?</p>
+      <p class="text-xs text-gray-500 mb-4">Skip the form — message us directly and we'll reply fast.</p>
+      <a href="{WA_GENERIC}" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white text-sm font-semibold py-3 rounded-md hover:brightness-95">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
   </div>
   <div class="border-t border-white/10 py-4 text-center text-xs">© 2026 SK Bird Net Solutions. All rights reserved.</div>
@@ -242,7 +253,7 @@ index_body = f"""
       <div class="max-w-lg text-white">
         <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight mb-4">SAY GOODBYE TO<br>PIGEON PROBLEMS.</h1>
         <p class="text-sm md:text-base text-gray-200 mb-6">Expert, Durable &amp; Aesthetic Bird Netting Solutions for Homes &amp; Businesses.</p>
-        <a href="contact.html#quote" class="inline-block bg-[var(--orange)] text-white text-sm font-semibold px-6 py-3 rounded-md hover:brightness-95">Get a Free Consultation</a>
+        <a href="{WA_GENERIC}" target="_blank" rel="noopener" class="inline-block bg-[var(--orange)] text-white text-sm font-semibold px-6 py-3 rounded-md hover:brightness-95">Get a Free Consultation</a>
       </div>
     </div>
   </div>
@@ -355,6 +366,7 @@ with open('/mnt/user-data/outputs/index.html','w') as f:
 service_blocks = ""
 for i, (name, desc, img, icon, slug) in enumerate(SERVICES):
     reverse = "md:flex-row-reverse" if i % 2 else ""
+    wa_service_link = wa_link(f"Hey SK Bird Net, I want to discuss about {name}.")
     service_blocks += f"""
   <div id="{slug}" class="scroll-mt-24 flex flex-col {reverse} md:flex-row items-center gap-8 py-10 border-b border-gray-100 last:border-0">
     <img src="{img}" class="w-full md:w-1/2 h-64 object-cover rounded-xl" alt="{name}">
@@ -362,7 +374,10 @@ for i, (name, desc, img, icon, slug) in enumerate(SERVICES):
       <i data-lucide="{icon}" class="w-8 h-8 text-[var(--orange)] mb-3"></i>
       <h3 class="text-xl font-extrabold text-[var(--navy)] mb-3">{name}</h3>
       <p class="text-sm text-gray-600 leading-relaxed mb-4">{desc}</p>
-      <a href="contact.html#quote" class="inline-block bg-[var(--navy)] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-[var(--blue)]">Get a Free Quote</a>
+      <a href="{wa_service_link}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:brightness-95">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+        Discuss on WhatsApp
+      </a>
     </div>
   </div>"""
 
@@ -417,33 +432,23 @@ with open('/mnt/user-data/outputs/about.html','w') as f:
     f.write(page("About Us | SK Bird Net", "about", about_body))
 
 # ---------------- CONTACT PAGE ----------------
-contact_body = """
+contact_body = f"""
 <section class="bg-[var(--navy)] py-16 text-center text-white">
   <p class="text-[var(--orange)] text-sm font-bold tracking-widest mb-2">CONTACT US</p>
   <h1 class="text-3xl md:text-4xl font-extrabold">Get In Touch</h1>
 </section>
-<section class="max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10">
-  <div>
-    <h2 class="text-xl font-extrabold text-[var(--navy)] mb-4">Request a Free Site Visit</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-      <input type="text" placeholder="Name" class="border border-gray-200 rounded-md px-4 py-3 text-sm">
-      <input type="tel" placeholder="Phone" class="border border-gray-200 rounded-md px-4 py-3 text-sm">
+<section class="max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+  <div class="border border-gray-200 rounded-2xl p-8 text-center shadow-sm">
+    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-[#25D366]/10 mx-auto mb-5">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-      <input type="text" placeholder="City" class="border border-gray-200 rounded-md px-4 py-3 text-sm">
-      <select class="border border-gray-200 rounded-md px-4 py-3 text-sm text-gray-500">
-        <option>Service type</option>
-        <option>Bird Netting Service</option>
-        <option>Child Safety Net</option>
-        <option>Sport Net Installation</option>
-        <option>Balcony Netting</option>
-        <option>Residential Bird Net</option>
-        <option>Invisible Grill Installation</option>
-        <option>Bamboo Chick</option>
-      </select>
-    </div>
-    <textarea placeholder="Message" rows="4" class="w-full border border-gray-200 rounded-md px-4 py-3 text-sm mb-3"></textarea>
-    <button class="w-full bg-[var(--orange)] text-white font-semibold py-3 rounded-md hover:brightness-95">Get Free Quote</button>
+    <h2 class="text-xl font-extrabold text-[var(--navy)] mb-2">Chat With Us on WhatsApp</h2>
+    <p class="text-sm text-gray-500 mb-6">Skip the form — tell us what you need and we'll get back to you fast.</p>
+    <a href="{WA_GENERIC}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-semibold py-3.5 rounded-md hover:brightness-95">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <p class="text-xs text-gray-400 mt-3">+91 88780 20513</p>
   </div>
   <div class="space-y-4">
     <div class="flex items-start gap-3">
@@ -462,7 +467,7 @@ contact_body = """
       <i data-lucide="clock" class="w-5 h-5 text-[var(--orange)] mt-0.5"></i>
       <p class="text-sm text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
     </div>
-    <img src="https://images.unsplash.com/photo-1580128637416-64e5f0a2f9b6?q=80&w=900&auto=format&fit=crop" class="w-full h-56 object-cover rounded-xl mt-4" alt="Service area">
+    <img src="{FEEDBACK_PHOTO_URI}" class="w-full h-56 object-cover rounded-xl mt-4" alt="Service area">
   </div>
 </section>
 """
