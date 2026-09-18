@@ -1,4 +1,4 @@
-# SK Bird Net Solutions — Website
+# SK Bird Netting Service — Website
 
 Static 4-page marketing site for SK Bird Net (bird netting, child safety net,
 sport net, balcony netting, residential bird net, invisible grill, bamboo chick).

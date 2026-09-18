@@ -6,7 +6,7 @@ WHATSAPP_NUMBER = "918878020513"
 def wa_link(message):
     return f"https://wa.me/{WHATSAPP_NUMBER}?text={urllib.parse.quote(message)}"
 
-WA_GENERIC = wa_link("Hi SK Bird Net, I'd like a free quote.")
+WA_GENERIC = wa_link("Hi SK Bird Netting Service, I'd like a free quote.")
 
 HERO_URI = "assets/hero-balcony.jpg"
 BIRD_NETTING_URI = "assets/bird-netting-service.jpg"
@@ -57,8 +57,8 @@ def header(active):
         <path d="M10 25H24" stroke="var(--blue)" stroke-width="2"/>
       </svg>
       <div class="leading-tight">
-        <p class="font-extrabold text-[var(--navy)] text-base md:text-lg tracking-tight">SK BIRD NET</p>
-        <p class="text-[9px] md:text-[10px] tracking-[0.2em] text-gray-500 font-medium -mt-1">SOLUTIONS</p>
+        <p class="font-extrabold text-[var(--navy)] text-base md:text-lg tracking-tight">SK BIRD NETTING</p>
+        <p class="text-[9px] md:text-[10px] tracking-[0.2em] text-gray-500 font-medium -mt-1">SERVICE</p>
       </div>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-[var(--navy)]">
@@ -123,7 +123,7 @@ def footer():
     return f"""<footer id="contact-footer" class="bg-[var(--navy)] text-gray-300 mt-6">
   <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-10">
     <div>
-      <p class="font-extrabold text-white text-lg mb-3">SK BIRD NET</p>
+      <p class="font-extrabold text-white text-lg mb-3">SK BIRD NETTING SERVICE</p>
       <ul class="space-y-2 text-sm">
         <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-0.5"></i>Sector 3A, Ashok Vihar Phase-1, Gurugram, Haryana 122006</li>
         <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i>+91 88780 20513</li>
@@ -153,7 +153,7 @@ def footer():
       </a>
     </div>
   </div>
-  <div class="border-t border-white/10 py-4 text-center text-xs">© 2026 SK Bird Net Solutions. All rights reserved.</div>
+  <div class="border-t border-white/10 py-4 text-center text-xs">© 2026 SK Bird Netting Service. All rights reserved.</div>
 </footer>"""
 
 SCRIPT = """<script>
@@ -278,7 +278,7 @@ index_body = f"""
 <!-- Why choose us + testimonials -->
 <section class="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-start">
   <div>
-    <h2 class="text-xl font-extrabold text-[var(--navy)] mb-4">WHY CHOOSE SK BIRD NET?</h2>
+    <h2 class="text-xl font-extrabold text-[var(--navy)] mb-4">WHY CHOOSE SK BIRD NETTING SERVICE?</h2>
     <ul class="space-y-2 mb-8 text-sm text-gray-700 font-medium">
       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i>Quality Nets</li>
       <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i>Expert Installation</li>
@@ -335,7 +335,7 @@ index_body = f"""
           <source src="{FEEDBACK_VIDEO2_URI}" type="video/mp4">
         </video>
         <div class="p-4">
-          <p class="text-xs text-gray-600 italic">"Another happy customer sharing their experience with SK Bird Net."</p>
+          <p class="text-xs text-gray-600 italic">"Another happy customer sharing their experience with SK Bird Netting Service."</p>
           <p class="text-xs font-semibold text-[var(--navy)] mt-2">Verified Customer</p>
         </div>
       </div>
@@ -360,13 +360,13 @@ index_body = f"""
 """
 
 with open('/mnt/user-data/outputs/index.html','w') as f:
-    f.write(page("SK Bird Net | Bird Netting Solutions for Homes & Businesses", "home", index_body))
+    f.write(page("SK Bird Netting Service | Bird Netting Solutions for Homes & Businesses", "home", index_body))
 
 # ---------------- SERVICES PAGE ----------------
 service_blocks = ""
 for i, (name, desc, img, icon, slug) in enumerate(SERVICES):
     reverse = "md:flex-row-reverse" if i % 2 else ""
-    wa_service_link = wa_link(f"Hey SK Bird Net, I want to discuss about {name}.")
+    wa_service_link = wa_link(f"Hey SK Bird Netting Service, I want to discuss about {name}.")
     service_blocks += f"""
   <div id="{slug}" class="scroll-mt-24 flex flex-col {reverse} md:flex-row items-center gap-8 py-10 border-b border-gray-100 last:border-0">
     <img src="{img}" class="w-full md:w-1/2 h-64 object-cover rounded-xl" alt="{name}">
@@ -393,7 +393,7 @@ services_body = f"""
 {STATS}
 """
 with open('/mnt/user-data/outputs/services.html','w') as f:
-    f.write(page("Our Services | SK Bird Net", "services", services_body))
+    f.write(page("Our Services | SK Bird Netting Service", "services", services_body))
 
 # ---------------- ABOUT PAGE ----------------
 about_body = f"""
@@ -402,10 +402,10 @@ about_body = f"""
   <h1 class="text-3xl md:text-4xl font-extrabold">Who We Are</h1>
 </section>
 <section class="max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
-  <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=900&auto=format&fit=crop" class="w-full h-80 object-cover rounded-xl" alt="SK Bird Net team">
+  <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=900&auto=format&fit=crop" class="w-full h-80 object-cover rounded-xl" alt="SK Bird Netting Service team">
   <div>
     <h2 class="text-2xl font-extrabold text-[var(--navy)] mb-4">Protecting Homes &amp; Businesses Across India</h2>
-    <p class="text-sm text-gray-600 leading-relaxed mb-4">SK Bird Net has been installing durable, UV-resistant bird netting, child safety nets, sport nets, and invisible grills for homes and businesses across India. Every installation is handled by trained, certified crews and backed by a written warranty.</p>
+    <p class="text-sm text-gray-600 leading-relaxed mb-4">SK Bird Netting Service has been installing durable, UV-resistant bird netting, child safety nets, sport nets, and invisible grills for homes and businesses across India. Every installation is handled by trained, certified crews and backed by a written warranty.</p>
     <p class="text-sm text-gray-600 leading-relaxed">From apartment balconies to commercial rooftops, our focus stays the same — clean installation, honest pricing, and netting that holds up for years.</p>
   </div>
 </section>
@@ -429,7 +429,7 @@ about_body = f"""
 </section>
 """
 with open('/mnt/user-data/outputs/about.html','w') as f:
-    f.write(page("About Us | SK Bird Net", "about", about_body))
+    f.write(page("About Us | SK Bird Netting Service", "about", about_body))
 
 # ---------------- CONTACT PAGE ----------------
 contact_body = f"""
@@ -472,6 +472,6 @@ contact_body = f"""
 </section>
 """
 with open('/mnt/user-data/outputs/contact.html','w') as f:
-    f.write(page("Contact Us | SK Bird Net", "contact", contact_body))
+    f.write(page("Contact Us | SK Bird Netting Service", "contact", contact_body))
 
 print("done")
