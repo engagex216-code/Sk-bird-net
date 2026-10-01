@@ -467,7 +467,12 @@ contact_body = f"""
       <i data-lucide="clock" class="w-5 h-5 text-[var(--orange)] mt-0.5"></i>
       <p class="text-sm text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
     </div>
-    <img src="{FEEDBACK_PHOTO_URI}" class="w-full h-56 object-cover rounded-xl mt-4" alt="Service area">
+    <iframe
+      class="w-full h-56 rounded-xl mt-4 border-0"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCJFHX7ty9npFMC7WL14UrewA12erSTGkU&q=SK+Bird+Netting+Service,+Sector+3A,+Ashok+Vihar+Phase-1,+Gurugram,+Haryana+122006">
+    </iframe>
   </div>
 </section>
 """
