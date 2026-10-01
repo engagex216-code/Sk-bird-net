@@ -24,6 +24,7 @@ with open('/home/claude/lucide.min.js') as f:
     LUCIDE_JS = f.read()
 
 HEAD = """<meta charset="UTF-8">
+<meta name="google-site-verification" content="ZYX6ye-1TJI3q8LKudFulC8svB1E7ng4VW2Dlq8XsYY" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
