@@ -1,4 +1,5 @@
 import re
+import json
 import urllib.parse
 
 WHATSAPP_NUMBER = "918878020513"
@@ -132,7 +133,7 @@ def footer():
       <p class="font-extrabold text-white text-lg mb-3">SK BIRD NETTING SERVICE</p>
       <ul class="space-y-2 text-sm">
         <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-0.5"></i>Sector 3A, Ashok Vihar Phase-1, Gurugram, Haryana 122006</li>
-        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i>+91 88780 20513</li>
+        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i><a href="tel:+918878020513" class="hover:text-white">+91 88780 20513</a></li>
         <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i>info@skbirdnet.com</li>
       </ul>
       <div class="flex gap-3 mt-4">
@@ -219,6 +220,27 @@ def page(title, active, body, canonical_path=""):
         f'<title>{title}</title>\n<link rel="canonical" href="{canonical_url}">',
         1
     )
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "SK Bird Netting Service",
+        "url": SITE_URL + "/",
+        "image": SITE_URL + "/assets/hero-balcony.jpg",
+        "telephone": "+918878020513",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Sector 3A, Ashok Vihar Phase-1",
+            "addressLocality": "Gurugram",
+            "addressRegion": "Haryana",
+            "postalCode": "122006",
+            "addressCountry": "IN",
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 28.4824874, "longitude": 77.0139918},
+        "openingHours": "Mo-Sa 09:00-19:00",
+        "hasMap": "https://maps.app.goo.gl/a2ZEAL69n4QaENfM7",
+        "sameAs": ["https://maps.app.goo.gl/a2ZEAL69n4QaENfM7"],
+    }
+    head_filled += '\n<script type="application/ld+json">' + json.dumps(schema) + '</script>'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -460,7 +482,7 @@ contact_body = f"""
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.34c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
       Chat on WhatsApp
     </a>
-    <p class="text-xs text-gray-400 mt-3">+91 88780 20513</p>
+    <p class="text-xs text-gray-400 mt-3"><a href="tel:+918878020513" class="hover:underline">+91 88780 20513</a></p>
   </div>
   <div class="space-y-4">
     <div class="flex items-start gap-3">
@@ -469,7 +491,7 @@ contact_body = f"""
     </div>
     <div class="flex items-start gap-3">
       <i data-lucide="phone" class="w-5 h-5 text-[var(--orange)] mt-0.5"></i>
-      <p class="text-sm text-gray-600">+91 88780 20513</p>
+      <p class="text-sm text-gray-600"><a href="tel:+918878020513" class="hover:underline">+91 88780 20513</a></p>
     </div>
     <div class="flex items-start gap-3">
       <i data-lucide="mail" class="w-5 h-5 text-[var(--orange)] mt-0.5"></i>
