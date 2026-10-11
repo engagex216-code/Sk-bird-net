@@ -8,6 +8,11 @@ def wa_link(message):
 
 WA_GENERIC = wa_link("Hi SK Bird Netting Service, I'd like a free quote.")
 
+# Single source of truth for the live site URL — change this one line when
+# the real domain goes live, rerun build.py, and every canonical tag,
+# sitemap entry, and robots.txt line updates together.
+SITE_URL = "https://engagex216-code.github.io/Sk-bird-net"
+
 HERO_URI = "assets/hero-balcony.jpg"
 BIRD_NETTING_URI = "assets/bird-netting-service.jpg"
 CHILD_SAFETY_URI = "assets/child-safety-net.jpg"
@@ -206,8 +211,14 @@ WHATSAPP = """<a href="https://wa.me/918878020513?text=Hi%20SK%20Bird%20Net%2C%2
   <span class="wa-label hidden sm:inline text-sm">WhatsApp</span>
 </a>"""
 
-def page(title, active, body):
+def page(title, active, body, canonical_path=""):
+    canonical_url = f"{SITE_URL}/{canonical_path}" if canonical_path else f"{SITE_URL}/"
     head_filled = HEAD.format(title=title).replace('__LUCIDE_JS__', LUCIDE_JS)
+    head_filled = head_filled.replace(
+        f'<title>{title}</title>',
+        f'<title>{title}</title>\n<link rel="canonical" href="{canonical_url}">',
+        1
+    )
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -361,7 +372,7 @@ index_body = f"""
 """
 
 with open('/mnt/user-data/outputs/index.html','w') as f:
-    f.write(page("SK Bird Netting Service | Bird Netting Solutions for Homes & Businesses", "home", index_body))
+    f.write(page("SK Bird Netting Service | Bird Netting Solutions for Homes & Businesses", "home", index_body, canonical_path=""))
 
 # ---------------- SERVICES PAGE ----------------
 service_blocks = ""
@@ -394,7 +405,7 @@ services_body = f"""
 {STATS}
 """
 with open('/mnt/user-data/outputs/services.html','w') as f:
-    f.write(page("Our Services | SK Bird Netting Service", "services", services_body))
+    f.write(page("Our Services | SK Bird Netting Service", "services", services_body, canonical_path="services.html"))
 
 # ---------------- ABOUT PAGE ----------------
 about_body = f"""
@@ -430,7 +441,7 @@ about_body = f"""
 </section>
 """
 with open('/mnt/user-data/outputs/about.html','w') as f:
-    f.write(page("About Us | SK Bird Netting Service", "about", about_body))
+    f.write(page("About Us | SK Bird Netting Service", "about", about_body, canonical_path="about.html"))
 
 # ---------------- CONTACT PAGE ----------------
 contact_body = f"""
@@ -478,6 +489,6 @@ contact_body = f"""
 </section>
 """
 with open('/mnt/user-data/outputs/contact.html','w') as f:
-    f.write(page("Contact Us | SK Bird Netting Service", "contact", contact_body))
+    f.write(page("Contact Us | SK Bird Netting Service", "contact", contact_body, canonical_path="contact.html"))
 
 print("done")
